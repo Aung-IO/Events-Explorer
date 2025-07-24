@@ -1,17 +1,23 @@
 import { useQuery } from "@tanstack/react-query";
-import type { EventType } from "../types/EventType";
+import type { EventsResponse } from "../types/EventType";
+
 
 const CORS_PROXY = "https://corsproxy.io/?";
-const URL =
-  "https://app.ticketmaster.com/discovery/v2/events.json?apikey=JQNfAJNlkUHTU7DIOk997lmI9QiEazEB";
+const BASE_URL = "https://app.ticketmaster.com/discovery/v2/events.json";
+const API_KEY = "JQNfAJNlkUHTU7DIOk997lmI9QiEazEB";
 
-export default function useEvents() {
-  return useQuery<EventType[]>({
-    queryKey: ["eventsData"],
+export function useEvents(page: number, size: number = 10) {
+  return useQuery<EventsResponse>({
+    queryKey: ["eventsData", page],
     queryFn: async () => {
-      const res = await fetch(`${CORS_PROXY}${encodeURIComponent(URL)}`);
-      const data = await res.json();
-      return data._embedded?.events || [];
+      const url = `${BASE_URL}?apikey=${API_KEY}&page=${page}&size=${size}`;
+      const res = await fetch(`${CORS_PROXY}${encodeURIComponent(url)}`);
+      const json = await res.json();
+      return {
+        events: json._embedded?.events || [],
+        pageInfo: json.page, // contains size, totalPages, totalElements, number
+      };
     },
+   
   });
 }
