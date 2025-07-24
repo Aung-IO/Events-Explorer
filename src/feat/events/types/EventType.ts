@@ -16,7 +16,7 @@ export interface EventType {
   name: string;
   type: string;
   dates: {
-    start: { dateTime: string };
+    start: { localDate: string, localTime: string };
   };
   info?: string;
   classifications?: Classification[];
@@ -36,3 +36,4 @@ export interface EventsResponse {
   events: EventType[];
   pageInfo: PageInfo;
 }
+
