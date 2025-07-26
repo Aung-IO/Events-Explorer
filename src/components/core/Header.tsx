@@ -16,11 +16,6 @@ export default function Header() {
           <NavigationMenuList className="flex gap-6">
             <NavigationMenuItem>
               <NavigationMenuLink href="/" className="hover:text-blue-600">
-                Home
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink href="/events" className="hover:text-blue-600">
                 Events
               </NavigationMenuLink>
             </NavigationMenuItem>
@@ -46,8 +41,7 @@ export default function Header() {
           </SheetTrigger>
           <SheetContent side="right" className="p-6">
             <nav className="flex flex-col gap-4 text-lg">
-              <a href="/" className="hover:text-blue-600">Home</a>
-              <a href="/events" className="hover:text-blue-600">Events</a>
+              <a href="/" className="hover:text-blue-600">Events</a>
               <a href="/about" className="hover:text-blue-600">About</a>
               <a href="/contact" className="hover:text-blue-600">Contact</a>
             </nav>

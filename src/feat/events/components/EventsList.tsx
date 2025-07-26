@@ -18,12 +18,12 @@ export default function EventsList() {
     <div>
       {/* Event List */}
       <div className="p-6">
-        <h1 className="text-3xl font-bold text-center mb-6">Upcoming Events</h1>
+        <h1 className="text-3xl font-bold text-center mb-6">Explore your Events</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
           {events.length ? (
             events.map((event) => (
               <Link
-                to={`/event/${event.id}`}
+                to={`/events/${event.id}`}
                 key={event.id}
                 className="block hover:scale-105 transition-transform"
               >

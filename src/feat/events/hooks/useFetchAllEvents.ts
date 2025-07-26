@@ -4,7 +4,7 @@ import type { EventsResponse } from "../types/EventType";
 
 const CORS_PROXY = "https://corsproxy.io/?";
 const BASE_URL = "https://app.ticketmaster.com/discovery/v2/events.json";
-const API_KEY = "JQNfAJNlkUHTU7DIOk997lmI9QiEazEB";
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 export function useFetchAllEvents(page: number, size: number = 10) {
   return useQuery<EventsResponse>({

@@ -8,7 +8,7 @@ export const router = createBrowserRouter([
     Component: AppLayout,
     children: [
         { index: true, Component: EventsList },
-        { path: "event/:id", Component: EventDetail }
+        { path: "events/:id", Component: EventDetail }
     ]
   },
 
