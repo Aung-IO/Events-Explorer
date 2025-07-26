@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import { useFetchEvent } from "../hooks/useFetchEvent";
+import { useFetchEvent } from "../hooks/events/useFetchEvent";
 
 
 export default function EventDetail() {
@@ -14,7 +14,7 @@ export default function EventDetail() {
   return (
     <div className="max-w-3xl mx-auto p-6 bg-white shadow rounded-lg ">
       <div>
-       
+
         <h1 className="text-3xl font-bold mb-4">{event.name}</h1>
 
         <p className="text-gray-700 mb-2">
@@ -24,14 +24,14 @@ export default function EventDetail() {
           <span className="font-semibold">Time:</span> {event.dates.start.localTime}
         </p>
 
-       
+
         <img
           src={event.images[0]?.url}
           alt={event.name}
           className="w-full max-h-96 object-cover rounded-lg mb-6"
         />
       </div>
-    
+
       <div>
         {/* Venue Info */}
         {event._embedded?.venues?.[0] && (
@@ -57,7 +57,7 @@ export default function EventDetail() {
           </div>
         )}
 
-      
+
         {event.url && (
           <a
             href={event.url}
@@ -79,8 +79,8 @@ export default function EventDetail() {
         )}
       </div>
 
-    
-     
+
+
     </div>
 
   );

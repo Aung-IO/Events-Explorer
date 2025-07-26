@@ -9,9 +9,21 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { CalendarDays, MapPin } from "lucide-react";
+import { AlertTriangle, CalendarDays, MapPin } from "lucide-react";
 
 export default function EventCard({ event }: { event: EventType }) {
+   if (!event || !event._embedded?.venues?.length || !event.dates?.start) {
+    return (
+      <Card className="w-full max-w-sm rounded-xl shadow-md flex flex-col items-center justify-center p-6 text-center bg-red-50 border border-red-200">
+        <AlertTriangle className="w-8 h-8 text-red-500 mb-2" />
+        <p className="text-red-700 font-semibold">Event details unavailable</p>
+        <p className="text-sm text-gray-600 mt-1">
+          Something went wrong loading this event. Please try again later.
+        </p>
+      </Card>
+    );
+  }
+  
   const venue = event._embedded.venues[0];
   const location = `${venue.name}, ${venue.city.name}, ${
     venue.state?.name || ""

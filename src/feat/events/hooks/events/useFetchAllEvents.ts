@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import type { EventsResponse } from "../types/EventType";
-
+import type { EventsResponse } from "../../types/EventType";
 
 const CORS_PROXY = "https://corsproxy.io/?";
 const BASE_URL = "https://app.ticketmaster.com/discovery/v2/events.json";
@@ -18,6 +17,5 @@ export function useFetchAllEvents(page: number, size: number = 10) {
         pageInfo: json.page, // contains size, totalPages, totalElements, number
       };
     },
-   
   });
 }
