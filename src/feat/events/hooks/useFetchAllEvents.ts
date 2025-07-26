@@ -6,7 +6,7 @@ const CORS_PROXY = "https://corsproxy.io/?";
 const BASE_URL = "https://app.ticketmaster.com/discovery/v2/events.json";
 const API_KEY = "JQNfAJNlkUHTU7DIOk997lmI9QiEazEB";
 
-export function useEvents(page: number, size: number = 10) {
+export function useFetchAllEvents(page: number, size: number = 10) {
   return useQuery<EventsResponse>({
     queryKey: ["eventsData", page],
     queryFn: async () => {
